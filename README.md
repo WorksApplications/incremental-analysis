@@ -1,0 +1,66 @@
+# Incremental Analysis Maven Plugin
+
+This Maven Plugin helps developers to run static analysis only for updated codes.
+Designed to use in incremental build, like pre-merge build and local build.
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+## How to use
+
+### Introduce incremental-analysis plugin to your Maven project
+
+Add the following `<plugin>` element into your `pom.xml`:
+
+```xml
+<plugin>
+  <groupId>com.worksap.tools</groupId>
+  <artifactId>incremental-analysis-maven-plugin</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+</plugin>
+```
+
+Make sure it runs before the [spotbugs-maven-plugin](https://github.com/spotbugs/spotbugs-maven-plugin/).
+
+If you want to disable this plugin in local, use `<skip>` configuration then Maven run full analysis by default.
+You may overwrite this configuration by profile activated in the CI build.
+
+```xml
+<plugin>
+  <groupId>com.worksap.tools</groupId>
+  <artifactId>incremental-analysis-maven-plugin</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <configuration>
+    <skip>true</skip>
+  </configuration>
+</plugin>
+```
+
+### Run incremental analysis in local
+
+By default, this plugin runs to detect changes between your `HEAD` and `refs/heads/master`.
+This fits [the GitHub Flow](https://githubflow.github.io/) and [the GitLab Flow](https://docs.gitlab.com/ee/workflow/gitlab_flow.html).
+
+## Known problems
+
+* No support for checkstyle, PMD and other tools.
+* No support for other programming languages.
+* This version is not marked as thread safe. Current implementation expects that analysis maven plugin runs just after this plugin. For instance, following scenario with two threads may break the build:
+    1. Module A runs incremental-analysis-maven-plugin, and set `spotbugs.skip` as `true`
+    2. Module B runs incremental-analysis-maven-plugin, and set `spotbugs.skip` as `false`
+    3. Module A runs spotbugs-maven-plugin. We expect that Maven skips execution (see 1.) but now `spotbugs.skip` is `false` so it will not be skipped.
+
+## Copyright
+
+Copyright 2019 &copy; Works Applications Co.,Ltd.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
