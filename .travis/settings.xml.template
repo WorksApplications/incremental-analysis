@@ -22,6 +22,7 @@
       -->
       <id>release</id>
       <properties>
+        <gpg.keyname>...</gpg.keyname>
         <gpg.passphrase>...</gpg.passphrase>
       </properties>
     </profile>
