@@ -3,6 +3,7 @@
 This Maven Plugin helps developers to run static analysis only for updated codes.
 Designed to use in incremental build, like pre-merge build and local build.
 
+[![Build Status](https://travis-ci.com/WorksApplications/incremental-analysis.svg?branch=master)](https://travis-ci.com/WorksApplications/incremental-analysis)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ## How to use
