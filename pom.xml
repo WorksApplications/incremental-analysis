@@ -11,7 +11,7 @@
   <url>https://github.com/WorksApplications/incremental-analysis</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.version>3.3.1</maven.version>
+    <maven.version>3.5.4</maven.version>
     <javac.version>9+181-r4173-1</javac.version>
   </properties>
   <build>
