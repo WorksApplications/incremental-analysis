@@ -26,12 +26,13 @@ jobs:
     - script: skip
       name: "Deploy stable build"
       if: tag IS present
-      deploy:
+#      deploy:
         provider: script
         skip_cleanup: true
         script: ./mvnw deploy -B -P release -s .travis/settings.xml -DskipTests -Dinvoker.skip
         on:
-          tags: true
+          all_branches: true
+#          tags: true
 addons:
   sonarcloud:
     organization: "worksapplications"
