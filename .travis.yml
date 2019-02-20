@@ -1,0 +1,14 @@
+language: java
+dist: trusty
+java:
+  - openjdk8
+cache:
+  directories:
+    - $HOME/.m2/repository
+script:
+  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -B
+addons:
+  sonarcloud:
+    organization: "worksapplications"
+    token:
+      secure: "UJ804ps9zTSscigHmYaYjX5yydO2q1mC0gUvfW3kVExEHZbr/RUjzvweaYH8WZ3tfVKlp6itipCFccKo6YRoubu3OemVhThfTc+Tp41YvlMs5byu3GoZeKt5LNEUVscsYtLiRTQSzHAoc3+K7QGLTsZ77SzAN0C1GC57QmShIWl7aKkoZq+GZAHFr0vTBEp/XQxCL371ne9JqMEGexYl2w0DuuGmuFueqQU6D+MnJmietUXDpL98rzQUfoRExjhQDv1FPa9EzkPMDZoNvm7qH3cpMR4ZnVyMp9qtwk6YMDtPcE8fyUE9tHRbCff2aHf9lVsX8JUTrY2gdp0oGYWBozERSXtTMotvgBUgKBJW2JVTbBB3O8uWI2a9ZzJGJ+uZmwMT2jIFkkV5DnVRy03StsXsO2lxLa1B3gnk+bWCttccdDsTQvUMVSQvWqY2y4vlYu51izngAjVRkjTSda2LLg3NW6PgoZpaNffuB8w6KMqGQ0bjcA3b3FzLk5wyxqCMlPpOnbOAdHp/DquD91/bArMLpdBcN3e1twpJQGZGi74Nt3e2mlB/HVRgx9+TD1Da/ljoGopRs+T2jIIIQJiST2tGzckL6RKHtDhT3mHuYUyk+rTSe/A7NiSq90i/W39Oi+bYySFCJpEpKJmtrggP92SHf+PuQ2S9AYMvpBiFZPw="
