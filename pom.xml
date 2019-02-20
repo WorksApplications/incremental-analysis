@@ -6,7 +6,9 @@
   <artifactId>incremental-analysis-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <version>0.1.0-SNAPSHOT</version>
-  <name>Maven plugin to generate list of target class to analyze in incremental build</name>
+  <name>Incremental Analysis Maven Plugin</name>
+  <description>Maven plugin to generate list of target class to analyze in incremental build</description>
+  <url>https://github.com/WorksApplications/incremental-analysis</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.version>3.3.1</maven.version>
@@ -283,4 +285,23 @@
       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
     </snapshotRepository>
   </distributionManagement>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <name>Kengo TODA</name>
+      <email>toda_k@worksap.co.jp</email>
+      <organization>Works Applications Co.,Ltd.</organization>
+      <organizationUrl>https://www.worksap.com/</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/WorksApplications/incremental-analysis.git</connection>
+    <developerConnection>scm:git:git://github.com/WorksApplications/incremental-analysis.git</developerConnection>
+    <url>https://github.com/WorksApplications/incremental-analysis/tree/master</url>
+  </scm>
 </project>
