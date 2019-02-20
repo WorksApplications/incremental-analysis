@@ -9,7 +9,7 @@
   <name>Maven plugin to generate list of target class to analyze in incremental build</name>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.version>3.3.1</maven.version>
+    <maven.version>3.6.0</maven.version>
     <javac.version>9+181-r4173-1</javac.version>
   </properties>
   <build>
