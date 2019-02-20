@@ -44,7 +44,7 @@ import com.google.common.annotations.VisibleForTesting;
  * <p>Execute this mojo before you run spotbugs-maven-plugin, then you can check analysis only for
  * updated Java classes.
  *
- * <p><code><pre>
+ * <pre>
  *    &lt;plugin&gt;
  *      &lt;groupId&gt;com.worksap.tools&lt;/groupId&gt;
  *      &lt;artifactId&gt;incremental-analysis-maven-plugin&lt;/artifactId&gt;
@@ -69,7 +69,7 @@ import com.google.common.annotations.VisibleForTesting;
  *          &lt;/goals&gt;
  *        &lt;/execution&gt;
  *      &lt;/executions&gt;
- *    &lt;/plugin&gt;</pre></code>
+ *    &lt;/plugin&gt;</pre>
  *
  * @author Kengo TODA (toda_k@worksap.co.jp)
  */
