@@ -22,7 +22,12 @@ Add the following `<plugin>` element into your `pom.xml`:
 
 Make sure it runs before the [spotbugs-maven-plugin](https://github.com/spotbugs/spotbugs-maven-plugin/).
 
-If you want to disable this plugin in local, use `<skip>` configuration then Maven run full analysis by default.
+### Run incremental analysis in local
+
+By default, this plugin runs to detect changes between your `HEAD` and `refs/heads/master`.
+This fits [the GitHub Flow](https://githubflow.github.io/) and [the GitLab Flow](https://docs.gitlab.com/ee/workflow/gitlab_flow.html).
+
+If you want to full analysis in local, use `<skip>` configuration then Maven run full analysis by default.
 You may overwrite this configuration by profile activated in the CI build.
 
 ```xml
@@ -36,11 +41,6 @@ You may overwrite this configuration by profile activated in the CI build.
 </plugin>
 ```
 
-### Run incremental analysis in local
-
-By default, this plugin runs to detect changes between your `HEAD` and `refs/heads/master`.
-This fits [the GitHub Flow](https://githubflow.github.io/) and [the GitLab Flow](https://docs.gitlab.com/ee/workflow/gitlab_flow.html).
-
 ## Known problems
 
 * No support for checkstyle, PMD and other tools.
@@ -49,6 +49,9 @@ This fits [the GitHub Flow](https://githubflow.github.io/) and [the GitLab Flow]
     1. Module A runs incremental-analysis-maven-plugin, and set `spotbugs.skip` as `true`
     2. Module B runs incremental-analysis-maven-plugin, and set `spotbugs.skip` as `false`
     3. Module A runs spotbugs-maven-plugin. We expect that Maven skips execution (see 1.) but now `spotbugs.skip` is `false` so it will not be skipped.
+* This plugin does not ensure that the target branch has no potential bugs. It is possible to merge buggy code in several cases:
+    1. You added `@CheckForNull` to a method defined in interface. Then SpotBugs may find potential bug in its implementation, but it cannot be found by incremental analysis because it scans updated classes only.
+    2. You added `@CheckForNull` to a method. Then SpotBugs may find potential bug in its caller, but it cannot be found by incremental analysis because it scans updated classes only.
 
 ## Copyright
 
