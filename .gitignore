@@ -1,4 +1,5 @@
 .travis/codesigning.asc
+node_modules
 
 # Created by https://www.gitignore.io/api/maven,linux,eclipse,windows,intellij
 # Edit at https://www.gitignore.io/?templates=maven,linux,eclipse,windows,intellij
