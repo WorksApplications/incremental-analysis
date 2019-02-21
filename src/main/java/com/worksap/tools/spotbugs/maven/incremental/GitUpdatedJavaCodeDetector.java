@@ -40,28 +40,29 @@ class GitUpdatedJavaCodeDetector {
       throw new IllegalArgumentException("Git repository not found at " + projectRoot);
     }
     Path gitRoot = optionalGitRoot.get();
-    Git git = Git.open(gitRoot.toFile());
-    Repository repository = git.getRepository();
-    Ref targetRef = repository.exactRef(target);
-    if (targetRef == null) {
-      throw new IllegalArgumentException(target + " does not exist in this Git repo");
+    try (Git git = Git.open(gitRoot.toFile())) {
+      Repository repository = git.getRepository();
+      Ref targetRef = repository.exactRef(target);
+      if (targetRef == null) {
+        throw new IllegalArgumentException(target + " does not exist in this Git repo");
+      }
+      Ref sourceRef = repository.exactRef(source);
+      if (sourceRef == null) {
+        throw new IllegalArgumentException(source + " does not exist in this Git repo");
+      }
+      return !sourceRef.equals(targetRef);
     }
-    Ref sourceRef = repository.exactRef(source);
-    if (sourceRef == null) {
-      throw new IllegalArgumentException(source + " does not exist in this Git repo");
-    }
-    return !sourceRef.equals(targetRef);
   }
 
-  Stream<Path> detectUpdatedCode(Path projectRoot, String target, String source) throws IOException {
+  Stream<Path> detectUpdatedCode(Path projectRoot, String target, String source)
+      throws IOException {
     Optional<Path> optionalGitRoot = findGitRoot(projectRoot);
     if (!optionalGitRoot.isPresent()) {
       throw new IllegalArgumentException("Git repository not found at " + projectRoot);
     }
 
-    try {
-      Path gitRoot = optionalGitRoot.get();
-      Git git = Git.open(gitRoot.toFile());
+    Path gitRoot = optionalGitRoot.get();
+    try (Git git = Git.open(gitRoot.toFile())) {
       Repository repository = git.getRepository();
       List<DiffEntry> updated =
           git.diff()
