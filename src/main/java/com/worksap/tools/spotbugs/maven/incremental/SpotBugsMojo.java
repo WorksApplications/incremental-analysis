@@ -46,7 +46,7 @@ import org.eclipse.jgit.lib.Constants;
  *    &lt;plugin&gt;
  *      &lt;groupId&gt;com.worksap.tools&lt;/groupId&gt;
  *      &lt;artifactId&gt;incremental-analysis-maven-plugin&lt;/artifactId&gt;
- *      &lt;version&gt;0.1.0-SNAPSHOT&lt;/version&gt;
+ *      &lt;version&gt;1.0.1&lt;/version&gt;
  *      &lt;executions&gt;
  *        &lt;execution&gt;
  *          &lt;phase&gt;verify&lt;/phase&gt;
