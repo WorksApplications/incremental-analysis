@@ -190,8 +190,6 @@ public class SpotBugsMojo extends AbstractMojo {
    * @return A non-null mapped {@link Stream}.
    */
   private <T> Stream<T> streamFrom(Optional<T> optional) {
-    assert optional != null;
-
     if (optional.isPresent()) {
       return Stream.of(optional.get());
     } else {
