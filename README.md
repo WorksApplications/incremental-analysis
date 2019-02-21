@@ -16,7 +16,7 @@ Add the following `<plugin>` element into your `pom.xml`:
 <plugin>
   <groupId>com.worksap.tools</groupId>
   <artifactId>incremental-analysis-maven-plugin</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
 </plugin>
 ```
 
@@ -34,7 +34,7 @@ You may overwrite this configuration by profile activated in the CI build.
 <plugin>
   <groupId>com.worksap.tools</groupId>
   <artifactId>incremental-analysis-maven-plugin</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>1.0.0</version>
   <configuration>
     <skip>true</skip>
   </configuration>
