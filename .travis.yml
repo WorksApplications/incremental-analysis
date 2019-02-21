@@ -5,33 +5,18 @@ java:
 cache:
   directories:
     - $HOME/.m2/repository
+    - $HOME/.yarn-cache
 before_install:
-  - if [ -n "$encrypted_64235d4acdda_key" ]; then openssl aes-256-cbc -K $encrypted_64235d4acdda_key -iv $encrypted_64235d4acdda_iv -in .travis/secrets.tar.enc -out .travis/secrets.tar -d; fi
-  - if [ -f ".travis/secrets.tar" ]; then tar -xvf .travis/secrets.tar -C .travis; fi
+  - if [ -n "$encrypted_64235d4acdda_key" ]; then openssl aes-256-cbc -K $encrypted_64235d4acdda_key -iv $encrypted_64235d4acdda_iv -in .travis/codesigning.asc.enc -out .travis/codesigning.asc -d; fi
+  - if [ -f ".travis/codesigning.asc" ]; then gpg --fast-import .travis/codesigning.asc; fi
 install: true
-jobs:
-  include:
-    - stage: test
-      script: ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -B
-    - stage: deploy
-      name: "Deploy SNAPSHOT build"
-      script: skip
-      if: (branch = master) AND (type = push)
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script: ./mvnw deploy -B -P release -s .travis/settings.xml -DskipTests -Dinvoker.skip
-        on:
-          branch: master
-    - script: skip
-      name: "Deploy stable build"
-      if: tag IS present
-      deploy:
-        provider: script
-        skip_cleanup: true
-        script: ./mvnw deploy -B -P release -s .travis/settings.xml -DskipTests -Dinvoker.skip
-        on:
-          tags: true
+before_script:
+  - yarn global add @conveyal/maven-semantic-release semantic-release
+script:
+  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -B
+  - ./mvnw clean -B # to build classes without jacoco agent for release
+after_success:
+  - semantic-release --prepare @conveyal/maven-semantic-release --publish @semantic-release/github,@conveyal/maven-semantic-release --verify-conditions @semantic-release/github,@conveyal/maven-semantic-release --verify-release @conveyal/maven-semantic-release
 addons:
   sonarcloud:
     organization: "worksapplications"
