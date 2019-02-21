@@ -1,7 +1,4 @@
-.travis/pubring.gpg
-.travis/secring.gpg
-.travis/settings.xml
-.travis/secrets.tar
+.travis/codesigning.asc
 
 # Created by https://www.gitignore.io/api/maven,linux,eclipse,windows,intellij
 # Edit at https://www.gitignore.io/?templates=maven,linux,eclipse,windows,intellij

@@ -248,10 +248,6 @@
     </profile>
     <profile>
       <id>release</id>
-      <properties>
-        <gpg.publicKeyring>${basedir}/.travis/pubring.gpg</gpg.publicKeyring>
-        <gpg.secretKeyring>${basedir}/.travis/secring.gpg</gpg.secretKeyring>
-      </properties>
       <build>
         <plugins>
           <plugin>
