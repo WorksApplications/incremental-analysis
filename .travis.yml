@@ -17,7 +17,7 @@ script:
   - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -s maven-settings.xml -B
   - ./mvnw clean -B # to build classes without jacoco agent for release
 after_success:
-  - semantic-release
+  - travis_wait 20 semantic-release
 addons:
   sonarcloud:
     organization: "worksapplications"
