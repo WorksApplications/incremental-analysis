@@ -15,6 +15,7 @@
  */
 package com.worksap.tools.spotbugs.maven.incremental;
 
+import com.google.common.annotations.VisibleForTesting;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,7 +26,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.logging.Log;
@@ -34,8 +34,6 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
 import org.eclipse.jgit.lib.Constants;
-
-import com.google.common.annotations.VisibleForTesting;
 
 /**
  * A mojo to generate {@code -onlyAnalyze} parameter for spotbugs-maven-plugin. Generated parameter
@@ -142,9 +140,10 @@ public class SpotBugsMojo extends AbstractMojo {
     } else {
       project.getModel().addProperty(propertyToAnalyze, targetClassList);
       if (log.isDebugEnabled()) {
-          targetClasses.forEach(className -> {
+        targetClasses.forEach(
+            className -> {
               log.debug("Updated class: " + className);
-          });
+            });
       }
       log.info("Successfully generated list of target classes for SpotBugs.");
     }
