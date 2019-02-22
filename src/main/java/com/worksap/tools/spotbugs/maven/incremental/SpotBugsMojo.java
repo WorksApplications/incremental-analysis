@@ -37,37 +37,10 @@ import org.eclipse.jgit.lib.Constants;
 
 /**
  * A mojo to generate {@code -onlyAnalyze} parameter for spotbugs-maven-plugin. Generated parameter
- * will be set as property of current Maven execution.
+ * will be set as property of current Maven execution.<br>
  *
- * <p>Execute this mojo before you run spotbugs-maven-plugin, then you can check analysis only for
+ * Execute this mojo before you run spotbugs-maven-plugin, then you can check analysis only for
  * updated Java classes.
- *
- * <pre>
- *    &lt;plugin&gt;
- *      &lt;groupId&gt;com.worksap.tools&lt;/groupId&gt;
- *      &lt;artifactId&gt;incremental-analysis-maven-plugin&lt;/artifactId&gt;
- *      &lt;version&gt;1.0.1&lt;/version&gt;
- *      &lt;executions&gt;
- *        &lt;execution&gt;
- *          &lt;phase&gt;verify&lt;/phase&gt;
- *          &lt;goals&gt;
- *            &lt;goal&gt;spotbugs&lt;/goal&gt;
- *          &lt;/goals&gt;
- *        &lt;/execution&gt;
- *      &lt;/executions&gt;
- *    &lt;/plugin&gt;
- *    &lt;plugin&gt;
- *      &lt;groupId&gt;org.codehaus.mojo&lt;/groupId&gt;
- *      &lt;artifactId&gt;spotbugs-maven-plugin&lt;/artifactId&gt;
- *      &lt;executions&gt;
- *        &lt;execution&gt;
- *          &lt;phase&gt;verify&lt;/phase&gt;
- *          &lt;goals&gt;
- *            &lt;goal&gt;spotbugs&lt;/goal&gt;
- *          &lt;/goals&gt;
- *        &lt;/execution&gt;
- *      &lt;/executions&gt;
- *    &lt;/plugin&gt;</pre>
  *
  * @author Kengo TODA (toda_k@worksap.co.jp)
  */
@@ -79,21 +52,36 @@ import org.eclipse.jgit.lib.Constants;
 public class SpotBugsMojo extends AbstractMojo {
   private final GitUpdatedJavaCodeDetector detector;
 
-  @Parameter(property = "project", required = true)
+  @Parameter(property = "project")
   private MavenProject project;
 
+  /**
+   * Name of the property to generate value by this plugin, to specify {@code -onlyAnalyze} option to SpotBugs.
+   */
   @Parameter(defaultValue = "spotbugs.onlyAnalyze")
   private String propertyToAnalyze;
 
+  /**
+   * Name of the property to generate value by this plugin, to decide that spotbugs-maven-plugin needs to skip analysis or not.
+   */
   @Parameter(defaultValue = "spotbugs.skip")
   private String propertyToSkip;
 
+  /**
+   * Git ref of the source of pull-request or merge-request.
+   */
   @Parameter(defaultValue = Constants.HEAD, property = "incremental.spotbugs.source")
   private String source;
 
+  /**
+   * Git ref of the target of pull-request or merge-request.
+   */
   @Parameter(defaultValue = "refs/heads/master", property = "incremental.spotbugs.target")
   private String target;
 
+  /**
+   * Flag to skip execution of this incremental-analysis plugin.
+   */
   @Parameter(defaultValue = "false", property = "incremental.spotbugs.skip")
   private boolean skip;
 
