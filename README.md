@@ -45,10 +45,6 @@ You may overwrite this configuration by profile activated in the CI build.
 
 * No support for checkstyle, PMD and other tools.
 * No support for other programming languages.
-* This version is not marked as thread safe. Current implementation expects that analysis maven plugin runs just after this plugin. For instance, following scenario with two threads may break the build:
-    1. Module A runs incremental-analysis-maven-plugin, and set `spotbugs.skip` as `true`
-    2. Module B runs incremental-analysis-maven-plugin, and set `spotbugs.skip` as `false`
-    3. Module A runs spotbugs-maven-plugin. We expect that Maven skips execution (see 1.) but now `spotbugs.skip` is `false` so it will not be skipped.
 * This plugin does not ensure that the target branch has no potential bugs. It is possible to merge buggy code in several cases:
     1. You added `@CheckForNull` to a method defined in interface. Then SpotBugs may find potential bug in its implementation, but it cannot be found by incremental analysis because it scans updated classes only.
     2. You added `@CheckForNull` to a method. Then SpotBugs may find potential bug in its caller, but it cannot be found by incremental analysis because it scans updated classes only.

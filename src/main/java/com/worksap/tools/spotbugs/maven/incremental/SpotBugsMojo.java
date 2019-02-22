@@ -73,7 +73,7 @@ import org.eclipse.jgit.lib.Constants;
  */
 @Mojo(
     name = "spotbugs",
-    threadSafe = false,
+    threadSafe = true,
     requiresProject = true,
     defaultPhase = LifecyclePhase.VERIFY)
 public class SpotBugsMojo extends AbstractMojo {
