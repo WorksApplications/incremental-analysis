@@ -33,6 +33,10 @@ limitations under the License.
       <item name="Introduction" href="index.html"/>
       <item name="Goals" href="plugin-info.html"/>
     </menu>
+    <menu name="Examples">
+      <item name="Run incremental analysis in your Maven project" href="examples/maven.html"/>
+      <item name="Run incremental analysis in local" href="examples/local.html"/>
+    </menu>
     <menu ref="reports"/>
   </body>
   <custom>
