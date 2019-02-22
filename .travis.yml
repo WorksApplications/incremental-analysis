@@ -14,10 +14,16 @@ install:
 before_script:
   - yarn global add @conveyal/maven-semantic-release semantic-release
 script:
-  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -s maven-settings.xml -B
-  - ./mvnw clean -B # to build classes without jacoco agent for release
+  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar site -s maven-settings.xml -B
 after_success:
   - travis_wait 20 semantic-release
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  local-dir: target/site
+  on:
+    branch: master
 addons:
   sonarcloud:
     organization: "worksapplications"
