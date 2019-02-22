@@ -5,7 +5,7 @@
   <groupId>com.worksap.tools</groupId>
   <artifactId>incremental-analysis-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <name>Incremental Analysis Maven Plugin</name>
   <description>Maven plugin to generate list of target class to analyze in incremental build</description>
   <url>https://github.com/WorksApplications/incremental-analysis</url>
