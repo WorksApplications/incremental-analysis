@@ -14,9 +14,11 @@ install:
 before_script:
   - yarn global add @conveyal/maven-semantic-release semantic-release
 script:
-  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar site -s maven-settings.xml -B
+  - ./mvnw org.jacoco:jacoco-maven-plugin:prepare-agent verify sonar:sonar -s maven-settings.xml -B
 after_success:
   - travis_wait 20 semantic-release
+  # run site goal after semantic-release, to prove that generated site uses latest version number
+  - ./mvnw site -s maven-settings.xml -B
 deploy:
   provider: pages
   skip-cleanup: true
