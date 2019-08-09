@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@conveyal/maven-semantic-release@^4.3.0":
-  version "4.3.0"
-  resolved "https://registry.yarnpkg.com/@conveyal/maven-semantic-release/-/maven-semantic-release-4.3.0.tgz#2800b3e0dd527f25befb479a12df83fd21863fa3"
-  integrity sha512-l5/zxGAjjekpmmrF62DcrAVxqT2Rys7nz0btPuQXU3JQODP4jtS7nfgt8MvUjnByKFwgD+QqIG1dQ1900doFyQ==
+"@conveyal/maven-semantic-release@^4.4.0":
+  version "4.4.0"
+  resolved "https://registry.yarnpkg.com/@conveyal/maven-semantic-release/-/maven-semantic-release-4.4.0.tgz#2fd4eb2b42d6b85c1687cdfa92e061867ef70469"
+  integrity sha512-0FiF821E+Wgw0mEUUCMMrNglo+59egy7tbiCbTNx2VSvUlasdbl3zxvQm0xlS5+CNhjJ8I9+Dd6KgJESV74rKQ==
   dependencies:
     "@semantic-release/error" "^2.2.0"
     aggregate-error "^1.0.0"
@@ -712,7 +712,7 @@ graceful-fs@^4.1.2, graceful-fs@^4.1.6:
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.1.15.tgz#ffb703e1066e8a0eeaa4c8b80ba9253eeefbfb00"
   integrity sha512-6uHUhOPEBgQ24HM+r6b/QwWfZq+yiFcipKFrOFiBEnWdy5sdzYoi+pJeQaPI5qOLRFqWmAXUPQNsielzdLoecA==
 
-handlebars@^4.1.2:
+handlebars@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.1.2.tgz#b6b37c1ced0306b221e094fc7aca3ec23b131b67"
   integrity sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
