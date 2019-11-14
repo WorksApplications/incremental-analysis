@@ -5,7 +5,7 @@
     "@semantic-release/commit-analyzer": "^6.3.3",
     "@semantic-release/git": "^7.0.18",
     "@semantic-release/github": "^5.5.4",
-    "@semantic-release/release-notes-generator": "^7.3.0"
+    "@semantic-release/release-notes-generator": "^7.3.2"
   },
   "release": {
     "plugins": [
