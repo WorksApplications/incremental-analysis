@@ -181,7 +181,7 @@
     <dependency>
       <groupId>org.ow2.asm</groupId>
       <artifactId>asm</artifactId>
-      <version>7.2</version><!-- To support Java8, version 5 is not enough -->
+      <version>7.3.1</version><!-- To support Java8, version 5 is not enough -->
     </dependency>
     <dependency>
       <groupId>org.eclipse.jgit</groupId>
